@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Plant Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <!-- GAIL Header -->
+    <header class="gail-header">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="GAIL.svg.png" alt="GAIL Logo" class="gail-logo">
+                    <div class="company-info">
+                        <h1>Gas Authority of India Limited</h1>
+                        <p>Gas Plant Machine Monitoring System</p>
+                    </div>
+                </div>
+                <div class="header-controls">
+                    <div class="status-indicator">
+                        <div class="status-dot" id="statusDot"></div>
+                        <span id="statusText">System Ready</span>
+                    </div>
+                    <button id="themeToggle" class="theme-toggle">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="machine-selector">
+                    <h2>Select Machine</h2>
+                    <select id="machineSelect" class="machine-select">
+                        <option value="">-- Select a Machine --</option>
+                        <option value="compressor">Compressor</option>
+                        <option value="gasTurbine">Gas Turbine</option>
+                        <option value="gasAnalyzer">Gas Analyzer</option>
+                        <option value="cryogenicUnit">Cryogenic Unit</option>
+                        <option value="rotatingEquipment">Rotating Equipment</option>
+                        <option value="accelerator">Accelerator</option>
+                    </select>
+                </div>
+
+                <!-- Parameters Section -->
+                <div id="parametersSection" class="parameters-section" style="display: none;">
+                    <h3>Parameters</h3>
+                    <form id="parametersForm">
+                        <div id="parametersContainer"></div>
+                        <button type="submit" class="analyze-btn">
+                            📊 Analyze Data
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Export Section -->
+                <div id="exportSection" class="export-section" style="display: none;">
+                    <button id="downloadReport" class="download-btn">
+                        📄 Download PDF Report
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <div id="welcomeSection" class="welcome-section">
+                <div class="welcome-card">
+                    <div class="welcome-icon">🏭</div>
+                    <h2> Gas Plant Machine Monitoring System</h2>
+                    <p>Select a machine from the sidebar to begin monitoring its parameters and receive real-time safety alerts.</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">📊</div>
+                            <h3>Real-time Charts</h3>
+                            <p>Visualize machine parameters</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚠️</div>
+                            <h3>Safety Alerts</h3>
+                            <p>Automated monitoring with warnings</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📄</div>
+                            <h3>PDF Reports</h3>
+                            <p>Generate detailed analysis reports</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <h3>Mobile Responsive</h3>
+                            <p>Works on all devices</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <!-- Parameter Analysis -->
+                <div class="analysis-card">
+                    <h2 id="analysisTitle">Parameter Analysis</h2>
+                    <div id="parametersGrid" class="parameters-grid"></div>
+                </div>
+
+                <!-- Chart Section -->
+                <div class="chart-card">
+                    <canvas id="parametersChart"></canvas>
+                </div>
+
+                <!-- Safety Alerts -->
+                <div class="alerts-card">
+                    <h2>Safety Alerts & Recommendations</h2>
+                    <div id="alertsContainer"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 Gas Authority of India Limited. All rights reserved.</p>
+            <p>Developed by <strong>Yashasvi Grover</strong> - Internship Project</p>
+        </div>
+    </footer>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
