@@ -256,6 +256,8 @@ body {
     font-size: var(--font-base);
     transition: all 0.3s ease;
     min-height: 44px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .parameter-input:focus {
@@ -889,6 +891,10 @@ input:focus-visible {
     .theme-toggle {
         min-height: 48px;
         font-size: var(--font-base);
+    }
+    
+    .parameter-input {
+        font-size: 16px; /* Prevents zoom on iOS */
     }
     
     .parameter-card {

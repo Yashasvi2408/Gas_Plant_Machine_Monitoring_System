@@ -378,6 +378,7 @@ function generateParameterInputs(machineConfig) {
                 min="${param.min}"
                 max="${param.max}"
                 step="0.1"
+                inputmode="decimal"
                 data-tooltip="${param.tooltip}"
                 required
             />
@@ -390,6 +391,14 @@ function generateParameterInputs(machineConfig) {
 // Form submission handler
 function handleFormSubmission(event) {
     event.preventDefault();
+    
+    // Scroll to top on mobile when analyzing
+    if (window.innerWidth <= 768) {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
     
     if (!currentMachine) return;
     
